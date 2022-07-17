@@ -2,9 +2,19 @@ import React, { useEffect, useState } from 'react'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import NoteCard from '../components/NoteCard'
+import {makeStyles} from "@material-ui/core";
+
+const useStyles = makeStyles(() => {
+    return {
+        cardsField: {
+            marginTop: '80px',
+        },
+    }
+})
 
 export default function Notes() {
     const [notes, setNotes] = useState([]);
+    const classes = useStyles();
 
     useEffect(() => {
         fetch('http://localhost:8080/notes')
@@ -22,8 +32,7 @@ export default function Notes() {
 
     return (
         <Container>
-            <br />
-            <Grid container spacing={3}>
+            <Grid container spacing={3} className={classes.cardsField}>
                 {notes.map(note => (
                     <Grid item xs={12} md={6} lg={4} key={note.id}>
                         <NoteCard note={note} handleDelete={handleDelete} />
