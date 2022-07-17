@@ -21,6 +21,7 @@ export default function NoteCard({ note, handleDelete }) {
                             {note.title}
                         </Typography>
                     }
+                    subheader={note.date}
                 />
                 <CardContent>
                     <Typography variant="body2" color="textSecondary">

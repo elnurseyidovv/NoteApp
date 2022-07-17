@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Button, Container, makeStyles, TextField, Typography} from "@material-ui/core";
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import {useHistory} from "react-router-dom";
+import { format } from 'date-fns'
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -38,12 +39,13 @@ export default function Create() {
         e.preventDefault()
         setTitleError(title === '');
         setDescriptionError(description === '');
+        const date = '{' + format(new Date(), 'do MMMM Y, kk:mm') + '}';
 
         if (title && description) {
             fetch('http://localhost:8080/notes', {
                 method: 'POST',
                 headers: {"Content-type": "application/json"},
-                body: JSON.stringify({ title, description })
+                body: JSON.stringify({ title, description, date })
             }).then(() => history.push('/'))
         }
     }
