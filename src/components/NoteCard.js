@@ -9,7 +9,7 @@ import DeleteOutlined from '@material-ui/icons/DeleteOutlined'
 export default function NoteCard({ note, handleDelete }) {
     return (
         <div>
-            <Card elevation={1}>
+            <Card elevation={3}>
                 <CardHeader
                     action={
                         <IconButton onClick={() => handleDelete(note.id)}>
@@ -21,11 +21,10 @@ export default function NoteCard({ note, handleDelete }) {
                             {note.title}
                         </Typography>
                     }
-                    subheader={note.category}
                 />
                 <CardContent>
                     <Typography variant="body2" color="textSecondary">
-                        { note.details }
+                        { note.description }
                     </Typography>
                 </CardContent>
             </Card>
