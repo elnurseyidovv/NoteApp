@@ -7,6 +7,7 @@ import NoteSearch from '../components/NoteSearch'
 export default function Notes() {
     const [notesList, setNotesList] = useState([]);
     const [notesDisplay, setNotesDisplay] = useState([]);
+    const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
         fetch('http://localhost:8080/notes')
@@ -20,7 +21,8 @@ export default function Notes() {
         })
         const newNotes = notesList.filter(note => note.id !== id);
         setNotesList(newNotes);
-        setNotesDisplay(notesList);
+        setNotesDisplay(newNotes);
+        setSearchValue('');
     }
 
     const handleSearch = async (searchText) => {
@@ -40,6 +42,7 @@ export default function Notes() {
         <Container>
             <NoteSearch
                 handleSearch={handleSearch}
+                searchValue={searchValue}
             />
             <Masonry
                 style={{marginTop: '40px'}}

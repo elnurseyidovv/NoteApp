@@ -1,5 +1,5 @@
 import React from 'react'
-import {AppBar, Divider, makeStyles, Toolbar} from '@material-ui/core'
+import {AppBar, Button, Divider, makeStyles, Toolbar} from '@material-ui/core'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
 import { useHistory, useLocation } from 'react-router-dom'
@@ -8,6 +8,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import { AddCircleOutlineOutlined, SubjectOutlined } from '@material-ui/icons'
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const drawerWidth = 240
 const appBarHeight = 70
@@ -73,6 +74,11 @@ export default function Layout({ children }) {
                     <Typography color={"primary"} variant='h4' className={classes.appBarTitle}>
                         {location.pathname === '/create' ? 'CREATE PAGE' : (location.pathname === '/' ? 'NOTES PAGE' : 'NOT FOUND')}
                     </Typography>
+                    {location.pathname === '/' && <Button
+                        onClick={() => {window.scrollTo(0, 0)}}
+                        startIcon={<ArrowUpwardIcon />}
+                        color={"primary"}
+                    />}
                 </Toolbar>
             </AppBar>
 

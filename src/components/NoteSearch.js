@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => {
     }
 })
 
-export default function NoteSearch({ handleSearch }) {
+export default function NoteSearch({ handleSearch, searchValue }) {
 
     const classes = useStyles();
 
@@ -22,6 +22,7 @@ export default function NoteSearch({ handleSearch }) {
                     label="Search Keyword"
                     variant="outlined"
                     color="primary"
+                    value={searchValue}
                     className={classes.textField}
                     onChange={(e) => {handleSearch(e.target.value)}}
                 />
