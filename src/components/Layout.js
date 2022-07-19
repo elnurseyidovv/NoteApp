@@ -71,7 +71,7 @@ export default function Layout({ children }) {
             <AppBar className={classes.appBar} elevation={0}>
                 <Toolbar>
                     <Typography color={"primary"} variant='h4' className={classes.appBarTitle}>
-                        {location.pathname === '/create' ? 'CREATE PAGE' : 'NOTES PAGE'}
+                        {location.pathname === '/create' ? 'CREATE PAGE' : (location.pathname === '/' ? 'NOTES PAGE' : 'NOT FOUND')}
                     </Typography>
                 </Toolbar>
             </AppBar>
